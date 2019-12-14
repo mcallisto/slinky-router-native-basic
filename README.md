@@ -15,6 +15,9 @@ Then, launch the app with Expo
 npm start
 ```
 
+### See the app already published with Expo
+Go to the [app Expo page](https://expo.io/@mcallisto/slinky-router-native-basic)
+
 ## Contribute
 
 Help is needed, with the aim of mapping 100% of the react-router-native demo features.
