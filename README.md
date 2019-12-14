@@ -1,35 +1,27 @@
-# Scala.js + Slinky Expo Template
-This template sets up a simple React Native application written in Scala through [Scala.js](https://www.scala-js.org), [Slinky](https://slinky.dev), and [Expo](https://expo.io).
+# Slinky react-router-native
+Refactoring of [react-router-native basic example](https://reacttraining.com/react-router/native/example/Basic) coded in [Scala](https://scala-lang.org/) through [Scala.js](https://www.scala-js.org), [Slinky](https://slinky.dev), [ScalablyTyped](https://github.com/oyvindberg/ScalablyTyped) and [Expo](https://expo.io).
 
-## Installation
-Install the Expo CLI:
-```
-$ npm install -g expo-cli
-```
+## How to
+### Build the app
+Make sure you have SBT and NPM installed.
 
-Use the template
-```
-$ expo init --template expo-template-scala
-```
-
-## Building Apps
 Once you've created your project, first compile your Scala code to JavaScript by running
-```
-$ sbt fastOptJS
+```sh
+sbt fastOptJS
 ```
 
 Then, launch the app with Expo
-```
-$ npm start
-```
-
-## Production Bundles
-To create a minified app, first build an optimized Scala.js bundle
-```
-$ sbt fullOptJS
+```sh
+npm start
 ```
 
-Then, go to `App.js` and uncomment `module.exports = require("./target/scala-2.12/app-opt.js").app;` in order to enable the production bundle. Finally, switch Expo to production mode to load your production app.
+## Contribute
 
-## Ejecting
-If you need to develop your app without depending on Expo, you can eject at any time by running `npm run eject`. This gives you the option to either eject to a "bare" project that uses React Native's build tooling or to an unmanaged ExpoKit project that still uses Expo but lets you add in custom native dependencies.
+Help is needed, with the aim of mapping 100% of the react-router-native demo features.
+
+## Acknowledgements
+`slinky-react-router-native` is based on Slinky's [Expo Scala Template](https://github.com/shadaj/expo-template-scala).
+
+This demo uses the Scala.js typings and the thin facades developed by Øyvind Raddum Berg:
+*   [react-slinky](https://github.com/oyvindberg/ScalablyTyped/tree/master/facades/react-slinky)
+*   [react-router-native-slinky](https://github.com/oyvindberg/ScalablyTyped/tree/master/facades/react-router-native-slinky)
