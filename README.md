@@ -5,18 +5,18 @@ Refactoring of [react-router-native basic example](https://reacttraining.com/rea
 ### Build the app
 Make sure you have SBT and NPM installed.
 
-Once you've created your project, first compile your Scala code to JavaScript by running
+First compile your Scala code to JavaScript by running:
 ```sh
-sbt fastOptJS
+$ sbt fastOptJS
 ```
 
-Then, launch the app with Expo
+Then, launch the app with Expo:
 ```sh
-npm start
+$ npm start
 ```
 
 ### See the app already published with Expo
-Go to the [app Expo page](https://expo.io/@mcallisto/slinky-router-native-basic)
+Go to the [app Expo page](https://expo.io/@mcallisto/slinky-router-native-basic).
 
 ## Contribute
 
