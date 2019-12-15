@@ -3,7 +3,7 @@ Refactoring of [react-router-native basic example](https://reacttraining.com/rea
 
 ## How to
 ### Build the app
-Make sure you have SBT and NPM installed.
+Make sure you have [sbt](https://www.scala-sbt.org/) and [npm](https://www.npmjs.com/) installed.
 
 First compile your Scala code to JavaScript by running:
 ```sh
