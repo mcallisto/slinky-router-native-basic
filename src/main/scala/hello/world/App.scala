@@ -4,8 +4,8 @@ import slinky.core._
 import slinky.core.annotations.react
 import slinky.native._
 
-import typings.reactDashRouterDashNative.ReactRouterNativeFacade._
-import typings.reactDashRouter.reactDashRouterMod._
+import typings.reactRouterNative.components.{Route, Link, NativeRouter}
+import typings.reactRouter.mod.{RouteProps, `match`}
 
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.literal
@@ -38,7 +38,7 @@ object Styles {
       padding = 10
     )
 
-    NativeRouter(NativeRouterProps())(
+    NativeRouter(
       View(style = literal(
         marginTop = 25,
         padding = 10
@@ -49,13 +49,13 @@ object Styles {
             justifyContent = "space-around",
           )
         )(
-          Link(LinkProps(to = "/", style = navItemStyle))(Text("Home")),
-          Link(LinkProps(to = "/about", style = navItemStyle))(Text("About")),
-          Link(LinkProps(to = "/topics", style = navItemStyle))(Text("Topics"))
+          Link(to = "/", style = navItemStyle)(Text("Home")),
+          Link(to = "/about", style = navItemStyle)(Text("About")),
+          Link(to = "/topics", style = navItemStyle)(Text("Topics"))
         ),
-        Route[Unit](exact = true, path = "/", render = _ => home),
-        Route[Unit](path = "/about", render = _ => about),
-        Route[Unit](path = "/topics", render = props => Topics(props.`match`)),
+        Route(RouteProps(exact = true, path = "/", render = _ => home)),
+        Route(RouteProps(path = "/about", render = _ => about)),
+        Route(RouteProps(path = "/topics", render = props => Topics(props.`match`.asInstanceOf[`match`[Unit]])))
       )
     )
 
@@ -74,12 +74,17 @@ object Styles {
     View(
       Text(style = Styles.headerStyle)("Topics"),
       View(
-        Link(LinkProps(to = props.`match`.url + "/rendering", style = subNavItemStyle))(Text(style = Styles.topicStyle)("Rendering with React")),
-        Link(LinkProps(to = props.`match`.url + "/components", style = subNavItemStyle))(Text(style = Styles.topicStyle)("Components")),
-        Link(LinkProps(to = props.`match`.url + "/props-v-state", style = subNavItemStyle))(Text(style = Styles.topicStyle)("Props v. State"))
+        Link(to = props.`match`.url + "/rendering", style = subNavItemStyle)(Text(style = Styles.topicStyle)("Rendering with React")),
+        Link(to = props.`match`.url + "/components", style = subNavItemStyle)(Text(style = Styles.topicStyle)("Components")),
+        Link(to = props.`match`.url + "/props-v-state", style = subNavItemStyle)(Text(style = Styles.topicStyle)("Props v. State"))
       ),
-      Route[Topic.Param](path = props.`match`.path + "/:topicId", render = props => Topic(props.`match`)),
-      Route[Unit](exact = true, path = props.`match`.path, render = _ => Text("Please select a topic"))
+      Route(
+        RouteProps(
+          path = props.`match`.path + "/:topicId",
+          render = props => Topic(props.`match`.asInstanceOf[`match`[Topic.Param]])
+        )
+      ),
+      Route(RouteProps(exact = true, path = props.`match`.path, render = _ => Text("Please select a topic")))
     )
   }
 }
